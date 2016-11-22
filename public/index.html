@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+
+<head>
+
+    <style>
+      body{
+        background-size:100%;
+      }
+
+      nav {
+          float: left;
+          max-width: 160px;
+          margin: 0;
+          padding: 1em;
+      }
+
+      nav ul {
+          list-style-type: none;
+          padding: 0;
+      }
+
+      nav ul a {
+          text-decoration: none;
+      }
+
+      aside{
+        margin-left: 40%;
+        border-left: 1px solid gray;
+        padding: 1em;
+        overflow: hidden;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <title>Home - Resume</title>
+
+</head>
+
+<body  style="color:white;" background="http://hdwallpaperbackgrounds.net/wp-content/uploads/2016/08/Cool-Background-7.jpg">
+    <div class="container" ng-controller="AppCtrl">
+
+        <h1>William Garcia</h1>
+
+        <hr>
+        &nbsp;
+        <h3> Education</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="text-align: left">School</th>
+                    <th style="text-align: center">Major</th>
+                    <th style="text-align: right">Graduating Year</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="edus in resumelist | filter:'edu'">
+                    <td style="text-align: left">{{edu.school}}</td>
+                    <td style="text-align: center">{{edu.degree}}</td>
+                    <td style="text-align: right">{{edu.last_year}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+      <nav>
+        <h3>Skills</h3>
+          <table>
+              <tbody>
+                  <tr ng-repeat="skills in resumelist | filter:'skill'">
+                    <td style="text-align: left">• {{skills.skill}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </nav>
+
+      <aside>
+        <h3>Projects</h3>
+          <table class="table">
+              <tbody>
+                  <tr ng-repeat="project in resumelist | filter:'project'">
+                      <td style="text-align: left">{{project.title}}</td>
+                      <td >{{project.desc}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </aside>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="controllers/controller.js"></script>
+
+</body>
+
+</html>
